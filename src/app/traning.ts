@@ -1,38 +1,44 @@
-let uploadStatus: 'loading' | 'success' | 'error';
-let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
-
-interface User {
+interface IUser {
   name: string;
   age: number;
   surname: string;
   addres?: string;
 }
 
-const users: User[] = [
+interface RegistredUser extends IUser {
+  email: string;
+}
+
+type IUploadStatus = 'loading' | 'success' | 'error';
+type ITextFormat = 'uppercase' | 'lowercase' | 'capitalize';
+
+let uploadStatus: IUploadStatus;
+let textFormat: ITextFormat;
+
+const users: IUser[] = [
   { name: 'Ivan', age: 32, surname: 'Ivanov', addres: 'st. Green' },
   { name: 'Petr', age: 17, surname: 'Petrov', addres: 'st. Yellow' },
   { name: 'Vasil', age: 40, surname: 'Vasiliev', addres: 'st. Black' },
 ];
 
-const filterUsers: User[] = users.filter((user: User) => user.age >= 18);
+const filterUsers: IUser[] = users.filter((user: IUser) => user.age >= 18);
 
-interface RegistredUsers extends User {
-  email: string;
-}
+console.log(filterUsers);
 
 function sum(a: number, b: number): number {
   return a + b;
 }
 
-textFormat = 'capitalize';
-function formatString(line: string, status: typeof textFormat): string {
-  let temp: string = '';
+console.log(sum(5, 6));
+
+function formatString(line: string, status: ITextFormat): string {
+  let result: string = '';
   if (status === 'uppercase') {
-    temp = line.toUpperCase();
+    result = line.toUpperCase();
   } else if (status === 'lowercase') {
-    temp = line.toLowerCase();
+    result = line.toLowerCase();
   } else if (status === 'capitalize') {
-    temp = line
+    result = line
       .split(' ')
       .map((word) => {
         if (word.length === 0) return;
@@ -40,19 +46,15 @@ function formatString(line: string, status: typeof textFormat): string {
       })
       .join(' ');
   }
-  return temp;
+  return result;
 }
 
-function deleteSumbol(line: string, sumbol: string): string {
-  let tempString: string = '';
-  tempString = line.replaceAll(sumbol, '');
-  return tempString;
+console.log(formatString('Hello maaan', 'capitalize'));
+console.log(formatString('Hello maaan', 'lowercase'));
+console.log(formatString('Hello maaan', 'uppercase'));
+
+function deleteSymbol(line: string, symbol: string): string {
+  return line.replaceAll(symbol, '');
 }
 
-console.log(formatString('Hello maaan', textFormat));
-
-console.log(sum(5, 6));
-
-console.log(deleteSumbol('Осень наступила', 'н'));
-
-console.log(filterUsers);
+console.log(deleteSymbol('Осень наступила', 'н'));
