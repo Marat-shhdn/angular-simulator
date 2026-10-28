@@ -1,1 +1,90 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <div class="sub-header">
+    <div class="container">
+      <div class="container-content">
+        <div class="label">
+          <div>
+            <img [src]="companyLabelUrl" alt="Label" />
+          </div>
+          <p>{{ companyName }}</p>
+        </div>
+
+        <nav class="main-menu gap-24">
+          <a>Главная</a>
+          <a>Про гида</a>
+          <a>Программа тура</a>
+          <a>Стоимость</a>
+          <a>Блог</a>
+          <a>Контакты</a>
+        </nav>
+
+        <div><button>Консультация</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-header position-relative">
+    <div class="container">
+      <div class="adventure">
+        <h2 class="form-title">Насладись прогулкой в горах <br />с командой единомышленников</h2>
+        <div class="form-container flex-column align-items-center justify-content-center">
+          <form
+            class="adventure-form flex-row gap-24 justify-content-space-between align-items-flex-start"
+          >
+            <div class="form-group gap-8 flex-column">
+              <input
+                class="form-item select"
+                list="locations-list"
+                type="text"
+                id="form-list-location"
+                placeholder="Локация тура"
+                required
+              />
+              <datalist id="locations-list">
+                <option value="Кавказские горы"></option>
+                <option value="Алтайский край"></option>
+                <option value="Камчатка"></option>
+                <option value="Горы Эльбрус"></option>
+                <option value="Красная Поляна"></option>
+              </datalist>
+              <label for="form-list-location">выберете из списка</label>
+            </div>
+            <div class="form-group gap-8 flex-column">
+              <div class="gap-8 flex-column">
+                <input
+                  class="form-item calendar"
+                  type="text"
+                  id="form-date"
+                  placeholder="Дата похода"
+                  required
+                />
+                <label for="form-date">укажите дату</label>
+              </div>
+            </div>
+            <div class="form-group gap-8 flex-column">
+              <div class="gap-8 flex-column">
+                <input
+                  class="form-item select"
+                  list="members-list"
+                  type="text"
+                  id="form-list-members"
+                  placeholder="Участники"
+                  required
+                />
+                <datalist id="members-list">
+                  <option value="Кавказские горы"></option>
+                  <option value="Алтайский край"></option>
+                  <option value="Камчатка"></option>
+                  <option value="Горы Эльбрус"></option>
+                  <option value="Красная Поляна"></option>
+                </datalist>
+                <label for="form-list-members">выберете из списка</label>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn">Найти программу</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
