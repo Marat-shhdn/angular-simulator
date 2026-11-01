@@ -14,6 +14,7 @@ export class AppComponent {
     this.storagedDateLastVisit();
     this.getCountVisits();
   }
+
   companyLabelUrl: string = '/images/label-icon.svg';
   companyName: string = 'румтибет';
 
