@@ -110,3 +110,35 @@
     </div>
   </div>
 </section>
+<section class="ourOffer">
+  <div class="container offer">
+    <div class="mainOffer">
+      <div class="titleOffer">
+        <p>наше предложение</p>
+        <h2>Лучшие программы для тебя</h2>
+      </div>
+      <div class="textOffer">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+      </div>
+
+      @for (offer of offers; track offer.id) {
+        <div class="itemOffer">
+          <img [src]="offer.img" />
+          <div class="offerItemDescription">
+            <p>{{ offer.title }}</p>
+            <p>{{ offer.description }}</p>
+          </div>
+        </div>
+      }
+
+      <button>Стоимость программ</button>
+    </div>
+    <div class="imagesOffer">
+      <img src="/images/offer-lake.png" />
+      <img src="/images/offer-canyon.png" />
+      <img src="/images/offer-winter.png" />
+      <img src="/images/offer-mountain.png" />
+    </div>
+  </div>
+</section>

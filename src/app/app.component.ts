@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import './traning';
 import './collection';
 import { Colors } from '../enums/color';
+import { IOffer } from '../interfaces/IOffer';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,36 @@ import { Colors } from '../enums/color';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  companyLabelUrl: string = '/images/label-icon.svg';
+  companyName: string = 'румтибет';
+  offers: IOffer[] = [
+    {
+      id: 1,
+      img: '/images/offer-people-icon.svg',
+      title: 'Опытный гид',
+      description:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+    },
+    {
+      id: 2,
+      img: '/images/offer-sheild-icon.svg',
+      title: 'Безопасный поход',
+      description:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+    },
+    {
+      id: 3,
+      img: '/images/offer-price-icon.svg',
+      title: 'Лояльные цены',
+      description:
+        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+    },
+  ];
+
   constructor() {
     this.storagedDateLastVisit();
     this.getCountVisits();
   }
-
-  companyLabelUrl: string = '/images/label-icon.svg';
-  companyName: string = 'румтибет';
 
   isPrimaryColor(color: Colors): boolean {
     return color === Colors.RED || color === Colors.GREEN || color === Colors.BLUE ? true : false;

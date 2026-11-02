@@ -222,7 +222,6 @@
 }
 
 .aboutAdventure {
-  margin: 0 auto;
   width: 100%;
   height: 726px;
   background-color: #ffffff;
@@ -302,6 +301,112 @@
         color: var(--white-color);
         background-color: var(--active-color);
       }
+    }
+  }
+}
+.ourOffer {
+  width: 100%;
+  height: 771px;
+  background-color: #f3f5f4;
+  padding: 80px 0 100px;
+
+  .offer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    gap: 90px;
+    margin: 0 auto;
+    height: 591px;
+
+    .mainOffer {
+      width: 580px;
+      height: 591px;
+      display: flex;
+      flex-direction: column;
+      justify-self: start;
+      gap: 40px;
+
+      .titleOffer {
+        width: 100%;
+        height: 66px;
+        p {
+          font-weight: 400;
+          font-style: Regular;
+          font-size: 24px;
+          line-height: 20px;
+          letter-spacing: 0%;
+          color: #f2be22;
+        }
+
+        h2 {
+          font-weight: 800;
+          font-style: ExtraBold;
+          font-size: 32px;
+          line-height: 120%;
+          letter-spacing: 0%;
+        }
+      }
+
+      .textOffer {
+        width: 580px;
+        height: 81px;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 18px;
+        line-height: 150%;
+        letter-spacing: 0%;
+      }
+
+      .itemOffer {
+        width: 100%;
+        height: 64px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+
+        img {
+          width: 36px;
+          height: 36px;
+          flex-shrink: 0; // Запрещаем иконке сжиматься/деформироваться
+        }
+        .offerItemDescription {
+          max-width: 514px;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+
+          p:first-child {
+            font-weight: 700;
+            font-style: Bold;
+            font-size: 18px;
+            line-height: 20px;
+            letter-spacing: 1.2%;
+          }
+
+          p:last-child {
+            font-family: Nunito Sans;
+            font-weight: 400;
+            font-style: Regular;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0%;
+          }
+        }
+      }
+
+      button {
+        width: 236px;
+        height: 52px;
+        color: var(--white-color);
+        background-color: var(--active-color);
+      }
+    }
+
+    .imagesOffer {
+      width: 510px;
+      height: 510px;
     }
   }
 }
