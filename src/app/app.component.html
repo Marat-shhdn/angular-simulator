@@ -123,7 +123,11 @@
       </div>
 
       @for (offer of offers; track offer.id) {
-        <div class="itemOffer">
+        <div
+          class="itemOffer"
+          [class.active-offer]="offer.id === selectedOfferId"
+          (mouseenter)="selectOffer(offer.id)"
+        >
           <img [src]="offer.img" />
           <div class="offerItemDescription">
             <p>{{ offer.title }}</p>

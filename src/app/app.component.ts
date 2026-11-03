@@ -13,6 +13,8 @@ import { IOffer } from '../interfaces/IOffer';
 export class AppComponent {
   companyLabelUrl: string = '/images/label-icon.svg';
   companyName: string = 'румтибет';
+  status: string = 'loading';
+  selectedOfferId!: number;
   offers: IOffer[] = [
     {
       id: 1,
@@ -65,5 +67,9 @@ export class AppComponent {
     countEntrances = countEntrances + 1;
     // Сохраняем обратно в localStorage, через метод .toString()
     localStorage.setItem('countOfEntrances', countEntrances.toString());
+  }
+
+  selectOffer(offerId: number): void {
+    this.selectedOfferId = offerId;
   }
 }
