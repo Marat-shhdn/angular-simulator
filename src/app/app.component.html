@@ -1,7 +1,7 @@
 <header class="header">
   <div class="sub-header">
     <div class="container">
-      <div class="container-content">
+      <div class="container-content position-relative">
         <div class="label">
           <div>
             <img [src]="companyLabelUrl" alt="Label" />
@@ -19,6 +19,18 @@
         </nav>
 
         <div><button>Консультация</button></div>
+        <div class="clickerAndTimer">
+          @if (!timer) {
+            <span class="clicker">
+              <button (click)="substractOne()" [disabled]="clicker === 0">-</button>
+              {{ clicker }}
+              <button (click)="addOne()">+</button>
+            </span>
+          } @else {
+            <span>{{ dateDisplay }}</span>
+          }
+          <button (click)="changeString()">{{ nameButton }}</button>
+        </div>
       </div>
     </div>
   </div>
@@ -32,57 +44,77 @@
             class="adventure-form flex-row gap-24 justify-content-space-between align-items-flex-start"
           >
             <div class="form-group gap-8 flex-column">
-              <input
-                class="form-item select"
-                list="locations-list"
-                type="text"
-                id="form-list-location"
-                placeholder="Локация тура"
-                required
-              />
-              <datalist id="locations-list">
-                <option value="Кавказские горы"></option>
-                <option value="Алтайский край"></option>
-                <option value="Камчатка"></option>
-                <option value="Горы Эльбрус"></option>
-                <option value="Красная Поляна"></option>
-              </datalist>
+              <select class="form-item select" name="locations-list" [(ngModel)]="formLocation">
+                <option value="" disabled selected>Локация тура</option>
+                @for (location of locations; track location.id) {
+                  <option [value]="location.name">{{ location.meaning }}</option>
+                }
+              </select>
               <label for="form-list-location">выберете из списка</label>
             </div>
             <div class="form-group gap-8 flex-column">
               <div class="gap-8 flex-column">
-                <input
-                  class="form-item calendar"
-                  type="text"
-                  id="form-date"
-                  placeholder="Дата похода"
-                  required
-                />
-                <label for="form-date">укажите дату</label>
+                <mat-form-field class="data-form-field">
+                  @if (!campaignOne.value.start && !campaignOne.value.end) {
+                    <div class="datepicker-custom-text">Выберите период</div>
+                  } @else {
+                    <div class="datepicker-custom-text">
+                      {{ campaignOne.value.start | date: 'dd.MM.yyyy' }}
+                      –
+                      {{ campaignOne.value.end | date: 'dd.MM.yyyy' }}
+                    </div>
+                  }
+                  <mat-date-range-input
+                    [formGroup]="campaignOne"
+                    [rangePicker]="campaignOnePicker"
+                    [min]="minDate"
+                    class="hidden-inputs"
+                  >
+                    <input matStartDate formControlName="start" />
+                    <input matEndDate formControlName="end" />
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker">
+                    <img
+                      matDatepickerToggleIcon
+                      src="/images/calendar-icon.svg"
+                      alt="Календарь"
+                      style="width: 18px; height: 18px"
+                    />
+                  </mat-datepicker-toggle>
+                  <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+                </mat-form-field>
+                <label>укажите диапазон</label>
               </div>
             </div>
             <div class="form-group gap-8 flex-column">
               <div class="gap-8 flex-column">
-                <input
+                <select
                   class="form-item select"
-                  list="members-list"
-                  type="text"
+                  name="members-list"
                   id="form-list-members"
-                  placeholder="Участники"
-                  required
-                />
-                <datalist id="members-list">
-                  <option value="Кавказские горы"></option>
-                  <option value="Алтайский край"></option>
-                  <option value="Камчатка"></option>
-                  <option value="Горы Эльбрус"></option>
-                  <option value="Красная Поляна"></option>
-                </datalist>
+                  [(ngModel)]="formMember"
+                >
+                  <option value="" disabled selected>Участники</option>
+                  @for (member of members; track member.id) {
+                    <option [value]="member.name">{{ member.meaning }}</option>
+                  }
+                </select>
                 <label for="form-list-members">выберете из списка</label>
               </div>
             </div>
-            <button type="submit" class="submit-btn">Найти программу</button>
+            <button
+              type="submit"
+              class="submit-btn"
+              [disabled]="
+                !formLocation || !formMember || !campaignOne.value.start || !campaignOne.value.end
+              "
+            >
+              Найти программу
+            </button>
           </form>
+        </div>
+        <div class="liveInput">
+          <input placeholder="Живой инпут" [(ngModel)]="liveInput" />{{ liveInput }}
         </div>
       </div>
     </div>
