@@ -52,6 +52,7 @@ export class AppComponent {
   nameButton: string = 'Показать дату';
   timer: any = null;
   liveInput!: string;
+  waitingTime: boolean = true;
   offers: IOffer[] = [
     {
       id: 1,
@@ -94,6 +95,9 @@ export class AppComponent {
     this.storagedDateLastVisit();
     this.getCountVisits();
     console.log(this.formLocation);
+    setTimeout(() => {
+      this.waitingTime = false;
+    }, 5000);
   }
 
   isPrimaryColor(color: Colors): boolean {
