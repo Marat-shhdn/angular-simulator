@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import './traning';
 import './collection';
 import { Colors } from '../enums/color';
-import { IOffer } from '../interfaces/IOffer';
-import { ILocation } from '../interfaces/ILocation';
-import { IMember } from '../interfaces/IMember';
+import { OFFERS } from '../interfaces/IOffer';
+import { LOCATIONS } from '../interfaces/ILocation';
+import { MEMBERS } from '../interfaces/IMember';
 import { NgModel } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -53,43 +53,9 @@ export class AppComponent {
   timer: any = null;
   liveInput!: string;
   waitingTime: boolean = true;
-  offers: IOffer[] = [
-    {
-      id: 1,
-      img: '/images/offer-people-icon.svg',
-      title: 'Опытный гид',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-    },
-    {
-      id: 2,
-      img: '/images/offer-sheild-icon.svg',
-      title: 'Безопасный поход',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-    },
-    {
-      id: 3,
-      img: '/images/offer-price-icon.svg',
-      title: 'Лояльные цены',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-    },
-  ];
-  locations: ILocation[] = [
-    { id: 1, name: 'caucas', meaning: 'Кавказские горы' },
-    { id: 2, name: 'altay', meaning: 'Алтайский край' },
-    { id: 3, name: 'camchatka', meaning: 'Камчатка' },
-    { id: 4, name: 'elbrus', meaning: 'Горы Эльбрус' },
-    { id: 5, name: 'elbrus', meaning: 'Красная Поляна' },
-  ];
-  members: IMember[] = [
-    { id: 1, name: 'four', meaning: '4 персоны' },
-    { id: 2, name: 'five', meaning: '5 персон' },
-    { id: 3, name: 'six', meaning: '6 персон' },
-    { id: 4, name: 'seven', meaning: '7 персон' },
-    { id: 5, name: 'eigth', meaning: '8 персон' },
-  ];
+  offers = OFFERS;
+  locations = LOCATIONS;
+  members = MEMBERS;
 
   constructor(private datePipe: DatePipe) {
     this.storagedDateLastVisit();
